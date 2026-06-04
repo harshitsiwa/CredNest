@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - StudyVault Student Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-gradient-to-tr from-slate-900 via-slate-800 to-cyan-900 h-screen w-screen flex items-center justify-center overflow-hidden font-[Poppins]">
+    <!-- Visual background blobs -->
+    <div class="absolute w-96 h-96 bg-cyan-500 rounded-full opacity-10 blur-3xl -top-20 -left-20"></div>
+    <div class="absolute w-96 h-96 bg-purple-500 rounded-full opacity-10 blur-3xl -bottom-20 -right-20"></div>
+
+    <!-- Register Card Container -->
+    <div class="relative z-10 w-full max-w-md p-6">
+        <div class="bg-slate-900/60 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 shadow-2xl text-white">
+            <!-- Brand header -->
+            <div class="text-center mb-6">
+                <a href="index.html" class="inline-block hover:scale-105 transition duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg shadow-cyan-500/20">
+                        <i class="fas fa-shield-halved text-2xl text-white"></i>
+                    </div>
+                </a>
+                <h1 class="text-2xl font-extrabold tracking-tight">Study<span class="text-cyan-400">Vault</span></h1>
+                <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest font-semibold">Create Student Account</p>
+            </div>
+
+            <!-- Signup Form -->
+            <form id="signupForm" class="space-y-4">
+                <!-- Full Name input -->
+                <div>
+                    <label class="block text-xxs font-semibold uppercase tracking-wider text-slate-300 mb-1">Full Name</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400">
+                            <i class="fas fa-user text-xs"></i>
+                        </span>
+                        <input type="text" placeholder="Aarav Sharma" required id="fullName"
+                            class="w-full pl-11 pr-4 py-3 bg-slate-800/80 border border-slate-700/50 focus:border-cyan-500 rounded-xl text-xs focus:outline-none text-slate-300 font-medium transition">
+                    </div>
+                </div>
+
+                <!-- Email input -->
+                <div>
+                    <label class="block text-xxs font-semibold uppercase tracking-wider text-slate-300 mb-1">Student Email</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400">
+                            <i class="fas fa-envelope text-xs"></i>
+                        </span>
+                        <input type="email" placeholder="your.name@university.edu" required id="email"
+                            class="w-full pl-11 pr-4 py-3 bg-slate-800/80 border border-slate-700/50 focus:border-cyan-500 rounded-xl text-xs focus:outline-none text-slate-300 font-medium transition">
+                    </div>
+                </div>
+
+                <!-- Password input -->
+                <div>
+                    <label class="block text-xxs font-semibold uppercase tracking-wider text-slate-300 mb-1">Create Password</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400">
+                            <i class="fas fa-lock text-xs"></i>
+                        </span>
+                        <input type="password" placeholder="Min. 8 characters" required id="password" minlength="8"
+                            class="w-full pl-11 pr-4 py-3 bg-slate-800/80 border border-slate-700/50 focus:border-cyan-500 rounded-xl text-xs focus:outline-none text-slate-300 tracking-wider transition">
+                    </div>
+                </div>
+
+                <!-- Confirm Password input -->
+                <div>
+                    <label class="block text-xxs font-semibold uppercase tracking-wider text-slate-300 mb-1">Confirm Password</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400">
+                            <i class="fas fa-lock-keyhole text-xs"></i>
+                        </span>
+                        <input type="password" placeholder="Repeat your password" required id="confirmPassword"
+                            class="w-full pl-11 pr-4 py-3 bg-slate-800/80 border border-slate-700/50 focus:border-cyan-500 rounded-xl text-xs focus:outline-none text-slate-300 tracking-wider transition">
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="signupBtn"
+                    class="w-full py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold rounded-xl transition duration-300 shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2 text-sm mt-2">
+                    <span>Register & Access Vault</span>
+                    <i class="fas fa-arrow-right text-xs"></i>
+                </button>
+            </form>
+
+            <div class="mt-5 text-center text-xs text-slate-400">
+                <p>Already have an account? <a href="login.html" class="text-cyan-400 hover:underline font-semibold">Log In</a></p>
+                <p class="mt-2.5"><a href="index.html" class="text-slate-500 hover:text-slate-300"><i class="fas fa-arrow-left text-xxs mr-1"></i> Back to Homepage</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load scripts -->
+    <script src="loan-application.js"></script>
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const fullName = document.getElementById('fullName').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                if (typeof showNotification === 'function') {
+                    showNotification('Sign Up Error', 'Passwords do not match. Please verify.', 'error');
+                }
+                return;
+            }
+
+            const btn = document.getElementById('signupBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> Registering...';
+            
+            if (typeof showNotification === 'function') {
+                showNotification('Registration Complete', `Welcome, ${fullName}! Launching StudyVault Student Portal...`, 'success');
+            }
+            
+            setTimeout(() => {
+                window.location.href = 'student-home.html';
+            }, 1500);
+        });
+    </script>
+</body>
+
+</html>
