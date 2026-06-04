@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal Home - StudyVault</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-shield-halved text-xl text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Study<span class="text-cyan-500">Vault</span></h1>
+                        <p class="text-xs text-gray-500">Student Portal</p>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="student-home.html" class="nav-link active"><i class="fas fa-home mr-2"></i>Home</a>
+                    <a href="student-dashboard.html" class="nav-link"><i
+                            class="fas fa-chart-line mr-2"></i>Dashboard</a>
+                    <a href="loan-application.html" class="nav-link"><i
+                            class="fas fa-file-invoice-dollar mr-2"></i>Apply for Loan</a>
+                    <a href="student-chatbot.html" class="nav-link"><i class="fas fa-robot mr-2"></i>AI Assistant</a>
+                </div>
+
+                <button onclick="logout()" class="text-gray-600 hover:text-red-600"><i
+                        class="fas fa-sign-out-alt text-xl"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12 max-w-6xl">
+        <!-- Hero/Welcome Banner -->
+        <div class="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl p-8 md:p-12 shadow-xl text-white mb-10 relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-cyan-400 rounded-full opacity-20 blur-2xl"></div>
+            <div class="absolute right-20 top-5 w-32 h-32 bg-blue-300 rounded-full opacity-10 blur-xl"></div>
+            <div class="relative z-10">
+                <span class="bg-cyan-400 bg-opacity-30 text-cyan-100 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Student Dashboard</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold mt-4 mb-2">Welcome Back, Aarav Sharma!</h2>
+                <p class="text-cyan-100 max-w-2xl text-lg font-light">Your education loan application is currently undergoing AI-powered security verification. Here is a quick snapshot of your status.</p>
+            </div>
+        </div>
+
+        <!-- Status & Stats Grid -->
+        <div class="grid lg:grid-cols-3 gap-8 mb-10">
+            <!-- Active Loan Status Card -->
+            <div class="lg:col-span-2 bg-white rounded-3xl shadow-xl p-8 relative">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="text-sm text-gray-500 font-medium uppercase tracking-wider">Current Application</span>
+                        <h3 class="text-2xl font-bold text-gray-800 mt-1">₹7,50,000 <span class="text-sm font-normal text-gray-500">at 8.5% p.a.</span></h3>
+                        <p class="text-xs text-gray-400 mt-1">Application ID: EDU-2026-8947 • Submitted June 4, 2026</p>
+                    </div>
+                    <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-yellow-50 text-yellow-700 border border-yellow-200 animate-pulse">
+                        <span class="w-2.5 h-2.5 bg-yellow-500 rounded-full mr-2"></span>AI Screen Progress
+                    </span>
+                </div>
+
+                <!-- Loan Application Tracker Timeline -->
+                <div class="relative mt-8 mb-4">
+                    <!-- Progress Connection Bar -->
+                    <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200 lg:left-0 lg:right-0 lg:top-4 lg:bottom-auto lg:w-auto lg:h-0.5"></div>
+                    <div class="absolute left-4 top-0 h-3/4 w-0.5 bg-gradient-to-b from-green-500 to-cyan-500 lg:left-0 lg:right-0 lg:top-4 lg:bottom-auto lg:w-3/4 lg:h-0.5"></div>
+
+                    <!-- Steps Wrapper -->
+                    <div class="grid lg:grid-cols-5 gap-6 lg:gap-0 relative z-10">
+                        <!-- Step 1 -->
+                        <div class="flex items-center lg:flex-col lg:text-center">
+                            <div class="w-9 h-9 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm shadow-md">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <div class="ml-4 lg:ml-0 lg:mt-3">
+                                <h4 class="text-sm font-bold text-gray-800">Submitted</h4>
+                                <p class="text-xs text-gray-500">Application Form</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="flex items-center lg:flex-col lg:text-center">
+                            <div class="w-9 h-9 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm shadow-md">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <div class="ml-4 lg:ml-0 lg:mt-3">
+                                <h4 class="text-sm font-bold text-gray-800">Documents</h4>
+                                <p class="text-xs text-gray-500">Upload & Check</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="flex items-center lg:flex-col lg:text-center">
+                            <div class="w-9 h-9 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-sm shadow-md">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <div class="ml-4 lg:ml-0 lg:mt-3">
+                                <h4 class="text-sm font-bold text-gray-800">Video KYC</h4>
+                                <p class="text-xs text-gray-500">Liveness Proof</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="flex items-center lg:flex-col lg:text-center">
+                            <div class="w-9 h-9 rounded-full bg-cyan-500 text-white flex items-center justify-center font-bold text-sm shadow-md animate-pulse">
+                                <i class="fas fa-circle-notch fa-spin text-xs"></i>
+                            </div>
+                            <div class="ml-4 lg:ml-0 lg:mt-3">
+                                <h4 class="text-sm font-bold text-cyan-600">AI Verification</h4>
+                                <p class="text-xs text-gray-500">Risk Assessment</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 5 -->
+                        <div class="flex items-center lg:flex-col lg:text-center">
+                            <div class="w-9 h-9 rounded-full bg-gray-200 text-gray-400 flex items-center justify-center font-bold text-sm">
+                                <i class="fas fa-hand-holding-dollar text-xs"></i>
+                            </div>
+                            <div class="ml-4 lg:ml-0 lg:mt-3">
+                                <h4 class="text-sm font-bold text-gray-400">Disbursal</h4>
+                                <p class="text-xs text-gray-500">Fund Release</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats/Summary Panel -->
+            <div class="bg-white rounded-3xl shadow-xl p-8 flex flex-col justify-between">
+                <h3 class="text-lg font-bold text-gray-800 mb-4">Security Screening Stats</h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
+                                <i class="fas fa-shield-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-700">Fraud Score</h4>
+                                <p class="text-xs text-gray-500">AI Risk Assessment</p>
+                            </div>
+                        </div>
+                        <span class="text-sm font-bold text-green-600 bg-green-50 px-2.5 py-1 rounded-lg">8% (Safe)</span>
+                    </div>
+
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center text-cyan-600">
+                                <i class="fas fa-file-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-700">Files Uploaded</h4>
+                                <p class="text-xs text-gray-500">Mandatory Locker Files</p>
+                            </div>
+                        </div>
+                        <span class="text-sm font-bold text-cyan-600 bg-cyan-50 px-2.5 py-1 rounded-lg">8 / 8 Docs</span>
+                    </div>
+
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-700">CIBIL Score</h4>
+                                <p class="text-xs text-gray-500">Credit Bureau Check</p>
+                            </div>
+                        </div>
+                        <span class="text-sm font-bold text-purple-600 bg-purple-50 px-2.5 py-1 rounded-lg">785</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions Section -->
+        <h3 class="text-2xl font-bold text-gray-800 mb-6">Explore Portal Features</h3>
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Action 1: Dashboard -->
+            <a href="student-dashboard.html" class="group bg-white rounded-3xl shadow-lg p-8 border-2 border-transparent hover:border-cyan-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 block">
+                <div class="w-14 h-14 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center text-white text-2xl mb-6 shadow-md group-hover:scale-110 transition duration-300">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">View Interactive Dashboard</h4>
+                <p class="text-gray-500 text-sm leading-relaxed mb-4">Analyze verified logs, run custom interest rates on the calculator, and trace anti-tamper score metrics.</p>
+                <span class="text-cyan-500 font-semibold group-hover:text-blue-600 flex items-center text-sm">
+                    Open Dashboard <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1.5 transition"></i>
+                </span>
+            </a>
+
+            <!-- Action 2: Chatbot -->
+            <a href="student-chatbot.html" class="group bg-white rounded-3xl shadow-lg p-8 border-2 border-transparent hover:border-cyan-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 block">
+                <div class="w-14 h-14 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-2xl flex items-center justify-center text-white text-2xl mb-6 shadow-md group-hover:scale-110 transition duration-300">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">Talk to AI Loan Assistant</h4>
+                <p class="text-gray-500 text-sm leading-relaxed mb-4">Ask questions about document verification statuses, upload checklists, security criteria, or disbursal timing.</p>
+                <span class="text-purple-500 font-semibold group-hover:text-indigo-600 flex items-center text-sm">
+                    Start Chatting <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1.5 transition"></i>
+                </span>
+            </a>
+
+            <!-- Action 3: Loan Application -->
+            <a href="loan-application.html" class="group bg-white rounded-3xl shadow-lg p-8 border-2 border-transparent hover:border-cyan-500 hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 block">
+                <div class="w-14 h-14 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center text-white text-2xl mb-6 shadow-md group-hover:scale-110 transition duration-300">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">Apply for a New Loan</h4>
+                <p class="text-gray-500 text-sm leading-relaxed mb-4">Need additional funding for travel, university boarding, or textbook allowances? Initiate another application.</p>
+                <span class="text-green-500 font-semibold group-hover:text-emerald-600 flex items-center text-sm">
+                    New Application <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1.5 transition"></i>
+                </span>
+            </a>
+        </div>
+    </main>
+
+    <script src="loan-application.js"></script>
+    <script src="student-home.js"></script>
+</body>
+
+</html>

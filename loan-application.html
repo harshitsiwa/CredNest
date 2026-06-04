@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Application - StudyVault</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-shield-halved text-xl text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Study<span class="text-cyan-500">Vault</span></h1>
+                        <p class="text-xs text-gray-500">Student Portal</p>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="student-home.html" class="nav-link"><i class="fas fa-home mr-2"></i>Home</a>
+                    <a href="student-dashboard.html" class="nav-link"><i
+                            class="fas fa-chart-line mr-2"></i>Dashboard</a>
+                    <a href="loan-application.html" class="nav-link active"><i
+                            class="fas fa-file-invoice-dollar mr-2"></i>Apply for Loan</a>
+                    <a href="student-chatbot.html" class="nav-link"><i class="fas fa-robot mr-2"></i>AI Assistant</a>
+                </div>
+
+                <button onclick="logout()" class="text-gray-600 hover:text-red-600"><i
+                        class="fas fa-sign-out-alt text-xl"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Application Form -->
+    <section class="py-12">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="bg-white rounded-3xl shadow-2xl p-8">
+                <div class="text-center mb-8">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-file-invoice-dollar text-3xl text-white"></i>
+                    </div>
+                    <h1 class="text-4xl font-bold text-gray-800 mb-2">Education Loan Application</h1>
+                    <p class="text-gray-600">Complete all fields for AI-powered verification</p>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="mb-8">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-sm font-semibold text-cyan-600">Step <span id="currentStep">1</span> of
+                            3</span>
+                        <span class="text-sm text-gray-500"><span id="progress">33</span>% Complete</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div id="progressBar"
+                            class="bg-gradient-to-r from-cyan-500 to-blue-600 h-2 rounded-full transition-all duration-500"
+                            style="width: 33%"></div>
+                    </div>
+                </div>
+
+                <form id="loanForm">
+                    <!-- Step 1: Personal Information -->
+                    <div id="step1" class="form-step">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                            <i class="fas fa-user text-cyan-500 mr-3"></i>Personal Information
+                        </h2>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="form-label">Full Name *</label>
+                                <input type="text" name="fullName" required class="form-input"
+                                    placeholder="Enter your full name">
+                            </div>
+                            <div>
+                                <label class="form-label">Email Address *</label>
+                                <input type="email" name="email" required class="form-input"
+                                    placeholder="your.email@example.com">
+                            </div>
+                            <div>
+                                <label class="form-label">Phone Number *</label>
+                                <input type="tel" name="phone" required class="form-input"
+                                    placeholder="+91 XXXXX XXXXX">
+                            </div>
+                            <div>
+                                <label class="form-label">Date of Birth *</label>
+                                <input type="date" name="dob" required class="form-input">
+                            </div>
+                            <div>
+                                <label class="form-label">Gender *</label>
+                                <select name="gender" required class="form-input">
+                                    <option value="">Select gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label">Aadhaar Number *</label>
+                                <input type="text" name="aadhaar" required class="form-input"
+                                    placeholder="XXXX XXXX XXXX" maxlength="14">
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <label class="form-label">Permanent Address *</label>
+                            <textarea name="address" required class="form-input" rows="3"
+                                placeholder="Enter your complete address"></textarea>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-6 mt-6">
+                            <div>
+                                <label class="form-label">City *</label>
+                                <input type="text" name="city" required class="form-input" placeholder="City">
+                            </div>
+                            <div>
+                                <label class="form-label">State *</label>
+                                <input type="text" name="state" required class="form-input" placeholder="State">
+                            </div>
+                            <div>
+                                <label class="form-label">PIN Code *</label>
+                                <input type="text" name="pincode" required class="form-input" placeholder="XXXXXX"
+                                    maxlength="6">
+                            </div>
+                        </div>
+
+                        <button type="button" onclick="nextStep()"
+                            class="mt-8 w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold py-4 rounded-xl hover:shadow-lg transition">
+                            Next Step <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+
+                    <!-- Step 2: Academic & Loan Details -->
+                    <!-- Step 2: Academic & Loan Details -->
+                    <div id="step2" class="form-step hidden">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                            <i class="fas fa-graduation-cap text-cyan-500 mr-3"></i>Academic & Loan Details
+                        </h2>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="md:col-span-2">
+                                <label class="form-label">University/College Name *</label>
+                                <input type="text" name="university" required class="form-input"
+                                    placeholder="Enter institution name">
+                            </div>
+                            <div>
+                                <label class="form-label">Course/Program *</label>
+                                <input type="text" name="course" required class="form-input"
+                                    placeholder="e.g., B.Tech Computer Science">
+                            </div>
+                            <div>
+                                <label class="form-label">Year of Study *</label>
+                                <select name="year" required class="form-input">
+                                    <option value="">Select year</option>
+                                    <option value="1">1st Year</option>
+                                    <option value="2">2nd Year</option>
+                                    <option value="3">3rd Year</option>
+                                    <option value="4">4th Year</option>
+                                    <option value="5">5th Year</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label">Student ID *</label>
+                                <input type="text" name="studentId" required class="form-input"
+                                    placeholder="Your student ID">
+                            </div>
+                            <div>
+                                <label class="form-label">Course Duration (Years) *</label>
+                                <input type="number" name="duration" required class="form-input" placeholder="e.g., 4"
+                                    min="1" max="10">
+                            </div>
+                        </div>
+
+                        <!-- Document Upload Section -->
+                        <div
+                            class="mt-8 p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border-2 border-blue-200">
+                            <h3 class="font-bold text-gray-800 mb-4 flex items-center text-lg">
+                                <i class="fas fa-file-upload text-blue-600 mr-2"></i>Document Upload (Required)
+                            </h3>
+                            <p class="text-sm text-gray-600 mb-6">Upload clear copies of the following documents (PDF,
+                                JPG, or PNG - Max 5MB each)</p>
+
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <!-- Aadhaar Card -->
+                                <div class="document-upload-card">
+                                    <label class="form-label flex items-center">
+                                        <i class="fas fa-id-card text-blue-600 mr-2"></i>Aadhaar Card *
+                                    </label>
+                                    <input type="file" name="aadhaarDoc" accept=".pdf,.jpg,.jpeg,.png" required
+                                        class="file-input" onchange="handleFileUpload(this, 'aadhaarStatus')">
+                                    <div id="aadhaarStatus" class="upload-status"></div>
+                                </div>
+
+                                <!-- PAN Card -->
+                                <div class="document-upload-card">
+                                    <label class="form-label flex items-center">
+                                        <i class="fas fa-id-card-alt text-blue-600 mr-2"></i>PAN Card *
+                                    </label>
+                                    <input type="file" name="panDoc" accept=".pdf,.jpg,.jpeg,.png" required
+                                        class="file-input" onchange="handleFileUpload(this, 'panStatus')">
+                                    <div id="panStatus" class="upload-status"></div>
+                                </div>
+
+                                <!-- 10th Marksheet -->
+                                <div class="document-upload-card">
+                                    <label class="form-label flex items-center">
+                                        <i class="fas fa-certificate text-blue-600 mr-2"></i>10th Marksheet *
+                                    </label>
+                                    <input type="file" name="marksheet10" accept=".pdf,.jpg,.jpeg,.png" required
+                                        class="file-input" onchange="handleFileUpload(this, 'marksheet10Status')">
+                                    <div id="marksheet10Status" class="upload-status"></div>
+                                </div>
+
+                                <!-- 12th Marksheet -->
+                                <div class="document-upload-card">
+                                    <label class="form-label flex items-center">
+                                        <i class="fas fa-certificate text-blue-600 mr-2"></i>12th Marksheet *
+                                    </label>
+                                    <input type="file" name="marksheet12" accept=".pdf,.jpg,.jpeg,.png" required
+                                        class="file-input" onchange="handleFileUpload(this, 'marksheet12Status')">
+                                    <div id="marksheet12Status" class="upload-status"></div>
+                                </div>
+
+                                <!-- Admission Letter -->
+                                <div class="document-upload-card">
+                                    <label class="form-label flex items-center">
+                                        <i class="fas fa-file-alt text-blue-600 mr-2"></i>University Admission Letter *
+                                    </label>
+                                    <input type="file" name="admissionLetter" accept=".pdf,.jpg,.jpeg,.png" required
+                                        class="file-input" onchange="handleFileUpload(this, 'admissionStatus')">
+                                    <div id="admissionStatus" class="upload-status"></div>
+                                </div>
+
+                                <!-- Bank Statement -->
+                                <div class="document-upload-card">
+                                    <label class="form-label flex items-center">
+                                        <i class="fas fa-file-invoice-dollar text-blue-600 mr-2"></i>Bank Statement
+                                        (Last 6 months) *
+                                    </label>
+                                    <input type="file" name="bankStatement" accept=".pdf,.jpg,.jpeg,.png" required
+                                        class="file-input" onchange="handleFileUpload(this, 'bankStatus')">
+                                    <div id="bankStatus" class="upload-status"></div>
+                                </div>
+
+                                <!-- Income Proof -->
+                                <div class="document-upload-card">
+                                    <label class="form-label flex items-center">
+                                        <i class="fas fa-money-bill-wave text-blue-600 mr-2"></i>Parent/Guardian Income
+                                        Proof *
+                                    </label>
+                                    <input type="file" name="incomeProof" accept=".pdf,.jpg,.jpeg,.png" required
+                                        class="file-input" onchange="handleFileUpload(this, 'incomeStatus')">
+                                    <div id="incomeStatus" class="upload-status"></div>
+                                </div>
+
+                                <!-- Passport Photo -->
+                                <div class="document-upload-card">
+                                    <label class="form-label flex items-center">
+                                        <i class="fas fa-camera text-blue-600 mr-2"></i>Passport Size Photo *
+                                    </label>
+                                    <input type="file" name="photo" accept=".jpg,.jpeg,.png" required class="file-input"
+                                        onchange="handleFileUpload(this, 'photoStatus')">
+                                    <div id="photoStatus" class="upload-status"></div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                                <p class="text-sm text-yellow-800 flex items-start">
+                                    <i class="fas fa-exclamation-triangle mr-2 mt-0.5"></i>
+                                    <span><strong>Note:</strong> All documents will be verified by our AI system. Please
+                                        ensure documents are clear, readable, and match the information provided in the
+                                        form.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Loan Requirements Section -->
+                        <div
+                            class="mt-6 p-6 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl border border-cyan-200">
+                            <h3 class="font-bold text-gray-800 mb-4 flex items-center">
+                                <i class="fas fa-indian-rupee-sign text-cyan-600 mr-2"></i>Loan Requirements
+                            </h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="form-label">Loan Amount Required (₹) *</label>
+                                    <input type="number" name="loanAmount" required class="form-input"
+                                        placeholder="e.g., 500000" min="50000">
+                                </div>
+                                <div>
+                                    <label class="form-label">Repayment Period (Years) *</label>
+                                    <select name="repaymentPeriod" required class="form-input">
+                                        <option value="">Select period</option>
+                                        <option value="3">3 Years</option>
+                                        <option value="5">5 Years</option>
+                                        <option value="7">7 Years</option>
+                                        <option value="10">10 Years</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <label class="form-label">Purpose of Loan *</label>
+                                <textarea name="purpose" required class="form-input" rows="3"
+                                    placeholder="Explain how you will use the loan (tuition fees, hostel, study materials, etc.)"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="flex space-x-4 mt-8">
+                            <button type="button" onclick="prevStep()"
+                                class="w-1/2 bg-gray-200 text-gray-700 font-bold py-4 rounded-xl hover:bg-gray-300 transition">
+                                <i class="fas fa-arrow-left mr-2"></i>Previous
+                            </button>
+                            <button type="button" onclick="nextStep()"
+                                class="w-1/2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold py-4 rounded-xl hover:shadow-lg transition">
+                                Next Step <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Video KYC -->
+                    <div id="step3" class="form-step hidden">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                            <i class="fas fa-video text-cyan-500 mr-3"></i>10-Second Video KYC Verification
+                        </h2>
+
+                        <div
+                            class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border-2 border-purple-200 mb-6">
+                            <div class="flex items-start space-x-4 mb-6">
+                                <div
+                                    class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-info text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800 mb-2">Instructions for Video KYC</h3>
+                                    <ul class="text-sm text-gray-600 space-y-2">
+                                        <li class="flex items-start"><i
+                                                class="fas fa-check text-green-500 mr-2 mt-0.5"></i>Ensure you are in a
+                                            well-lit area</li>
+                                        <li class="flex items-start"><i
+                                                class="fas fa-check text-green-500 mr-2 mt-0.5"></i>Position your face
+                                            in the center of the frame</li>
+                                        <li class="flex items-start"><i
+                                                class="fas fa-check text-green-500 mr-2 mt-0.5"></i>Look directly at the
+                                            camera</li>
+                                        <li class="flex items-start"><i
+                                                class="fas fa-check text-green-500 mr-2 mt-0.5"></i>The recording will
+                                            automatically start after 3 seconds</li>
+                                        <li class="flex items-start"><i
+                                                class="fas fa-check text-green-500 mr-2 mt-0.5"></i>Total recording
+                                            time: 10 seconds</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div id="kycVideoContainer"
+                                class="bg-gray-900 rounded-xl p-8 mb-4 min-h-[300px] flex items-center justify-center">
+                                <div class="text-center text-gray-400">
+                                    <i class="fas fa-video text-6xl mb-4"></i>
+                                    <p class="text-lg">Camera feed will appear here</p>
+                                </div>
+                            </div>
+
+                            <button type="button" id="startKycBtn"
+                                class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-4 rounded-xl hover:shadow-lg transition">
+                                <i class="fas fa-camera mr-2"></i>Start 10-Second Video KYC
+                            </button>
+                            <p id="kycStatus" class="text-sm text-center mt-4"></p>
+                        </div>
+
+                        <div class="flex space-x-4">
+                            <button type="button" onclick="prevStep()"
+                                class="w-1/2 bg-gray-200 text-gray-700 font-bold py-4 rounded-xl hover:bg-gray-300 transition">
+                                <i class="fas fa-arrow-left mr-2"></i>Previous
+                            </button>
+                            <button type="submit" id="submitBtn"
+                                class="w-1/2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold py-4 rounded-xl hover:shadow-lg transition">
+                                <i class="fas fa-paper-plane mr-2"></i>Submit Application
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="loan-application.js"></script>
+</body>
+
+</html>

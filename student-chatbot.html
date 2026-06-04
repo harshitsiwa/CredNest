@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Loan Assistant - StudyVault</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-gray-50 h-screen flex flex-col">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50 flex-shrink-0">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-shield-halved text-xl text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Study<span class="text-cyan-500">Vault</span></h1>
+                        <p class="text-xs text-gray-500">Student Portal</p>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="student-home.html" class="nav-link"><i class="fas fa-home mr-2"></i>Home</a>
+                    <a href="student-dashboard.html" class="nav-link"><i
+                            class="fas fa-chart-line mr-2"></i>Dashboard</a>
+                    <a href="loan-application.html" class="nav-link"><i
+                            class="fas fa-file-invoice-dollar mr-2"></i>Apply for Loan</a>
+                    <a href="student-chatbot.html" class="nav-link active"><i class="fas fa-robot mr-2"></i>AI Assistant</a>
+                </div>
+
+                <button onclick="logout()" class="text-gray-600 hover:text-red-600"><i
+                        class="fas fa-sign-out-alt text-xl"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container (Fills the remaining screen height) -->
+    <main class="flex-grow container mx-auto px-6 py-8 max-w-6xl flex flex-col md:flex-row gap-8 overflow-hidden">
+        <!-- Left Sidebar: FAQs & Quick Prompts (Hidden on small screens, scrollable) -->
+        <div class="w-full md:w-80 flex-shrink-0 bg-white rounded-3xl shadow-xl p-6 flex flex-col h-auto md:h-full overflow-y-auto">
+            <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-circle-question text-purple-500 mr-2.5"></i>Frequently Asked Topics
+            </h3>
+            <p class="text-xs text-gray-500 mb-6 font-light">Select any topic below to automatically ask the StudyVault AI Assistant.</p>
+
+            <div class="space-y-3">
+                <button onclick="askQuestionChip('How long does document verification take?')" 
+                    class="w-full text-left p-3.5 bg-purple-50 border border-purple-100 hover:bg-purple-100 hover:border-purple-200 text-purple-900 rounded-2xl text-xs font-semibold transition duration-200 flex items-start">
+                    <i class="fas fa-clock mt-0.5 mr-2"></i>How long does verification take?
+                </button>
+
+                <button onclick="askQuestionChip('What documents are required for proof of income?')" 
+                    class="w-full text-left p-3.5 bg-cyan-50 border border-cyan-100 hover:bg-cyan-100 hover:border-cyan-200 text-cyan-900 rounded-2xl text-xs font-semibold transition duration-200 flex items-start">
+                    <i class="fas fa-file-invoice-dollar mt-0.5 mr-2"></i>What proof of income is needed?
+                </button>
+
+                <button onclick="askQuestionChip('Is my personal data and video KYC secure?')" 
+                    class="w-full text-left p-3.5 bg-green-50 border border-green-100 hover:bg-green-100 hover:border-green-200 text-green-900 rounded-2xl text-xs font-semibold transition duration-200 flex items-start">
+                    <i class="fas fa-lock mt-0.5 mr-2"></i>Is my data and video KYC secure?
+                </button>
+
+                <button onclick="askQuestionChip('What is the annual interest rate on the loan?')" 
+                    class="w-full text-left p-3.5 bg-yellow-50 border border-yellow-100 hover:bg-yellow-100 hover:border-yellow-200 text-yellow-900 rounded-2xl text-xs font-semibold transition duration-200 flex items-start">
+                    <i class="fas fa-percent mt-0.5 mr-2"></i>What is the annual interest rate?
+                </button>
+
+                <button onclick="askQuestionChip('How do I contact customer support?')" 
+                    class="w-full text-left p-3.5 bg-indigo-50 border border-indigo-100 hover:bg-indigo-100 hover:border-indigo-200 text-indigo-900 rounded-2xl text-xs font-semibold transition duration-200 flex items-start">
+                    <i class="fas fa-headset mt-0.5 mr-2"></i>How do I contact support?
+                </button>
+            </div>
+        </div>
+
+        <!-- Right Side: Active Chat Area (Fills height) -->
+        <div class="flex-grow bg-white rounded-3xl shadow-xl flex flex-col h-full overflow-hidden border border-gray-100">
+            <!-- Chat Header -->
+            <div class="bg-white border-b border-gray-100 p-5 flex items-center justify-between flex-shrink-0">
+                <div class="flex items-center space-x-3.5">
+                    <div class="relative">
+                        <div class="w-11 h-11 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full flex items-center justify-center text-white text-lg">
+                            <i class="fas fa-robot animate-bounce"></i>
+                        </div>
+                        <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-800 text-base">StudyVault AI Assistant</h4>
+                        <p class="text-xs text-green-500 font-medium">Online & Monitoring Applications</p>
+                    </div>
+                </div>
+                <div class="text-gray-400 hover:text-gray-600 cursor-pointer p-1">
+                    <i class="fas fa-rotate-right text-sm" onclick="resetChat()"></i>
+                </div>
+            </div>
+
+            <!-- Chat Message log -->
+            <div id="chatHistory" class="flex-grow p-6 overflow-y-auto space-y-5 bg-slate-50 scrollbar-thin">
+                <!-- AI Welcoming Message -->
+                <div class="flex items-start space-x-3.5 max-w-[85%]">
+                    <div class="w-9 h-9 bg-purple-100 text-purple-600 rounded-xl flex-shrink-0 flex items-center justify-center text-sm font-bold">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm text-sm text-gray-700 leading-relaxed">
+                        Hello Aarav! I am your **StudyVault AI Assistant**. I monitor your loan verification, check document authenticity signatures, and assess fraud scores. 
+                        <br><br>
+                        How can I help you today? Feel free to ask about interest terms, safety checks, or verification speeds!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Input Area -->
+            <div class="p-4 border-t border-gray-100 bg-white flex-shrink-0">
+                <form id="chatForm" class="flex items-center gap-3">
+                    <input type="text" id="chatInput" placeholder="Type your query here..." required autocomplete="off"
+                        class="flex-grow p-4 bg-gray-50 border border-gray-200 rounded-2xl text-sm focus:outline-none focus:border-purple-500 focus:bg-white transition duration-200">
+                    <button type="submit" 
+                        class="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-600 hover:shadow-lg transition duration-200 text-white rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-paper-plane text-sm"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="loan-application.js"></script>
+    <script src="student-chatbot.js"></script>
+</body>
+
+</html>

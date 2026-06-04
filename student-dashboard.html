@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - StudyVault</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-shield-halved text-xl text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Study<span class="text-cyan-500">Vault</span></h1>
+                        <p class="text-xs text-gray-500">Student Portal</p>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="student-home.html" class="nav-link"><i class="fas fa-home mr-2"></i>Home</a>
+                    <a href="student-dashboard.html" class="nav-link active"><i
+                            class="fas fa-chart-line mr-2"></i>Dashboard</a>
+                    <a href="loan-application.html" class="nav-link"><i
+                            class="fas fa-file-invoice-dollar mr-2"></i>Apply for Loan</a>
+                    <a href="student-chatbot.html" class="nav-link"><i class="fas fa-robot mr-2"></i>AI Assistant</a>
+                </div>
+
+                <button onclick="logout()" class="text-gray-600 hover:text-red-600"><i
+                        class="fas fa-sign-out-alt text-xl"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <main class="container mx-auto px-6 py-12 max-w-6xl">
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Left Side: AI Risk Score & Document Status (2 Cols) -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- AI Security & Fraud Scan Panel -->
+                <div class="bg-white rounded-3xl shadow-xl p-8 relative overflow-hidden">
+                    <div class="absolute -right-8 -top-8 w-32 h-32 bg-indigo-50 rounded-full"></div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                        <i class="fas fa-microchip text-indigo-500 mr-3"></i>AI Fraud & Risk Assessment
+                    </h3>
+
+                    <div class="grid md:grid-cols-3 gap-6 items-center">
+                        <!-- Risk Gauge Visualizer -->
+                        <div class="text-center md:border-r border-gray-100 pr-0 md:pr-6">
+                            <div class="relative w-36 h-36 mx-auto flex items-center justify-center">
+                                <!-- Outer Track -->
+                                <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="40" stroke="#f3f4f6" stroke-width="8" fill="transparent" />
+                                    <!-- Progress fill for 8% risk -->
+                                    <circle cx="50" cy="50" r="40" stroke="url(#gradient)" stroke-width="8" fill="transparent"
+                                        stroke-dasharray="251.2" stroke-dashoffset="231.1" stroke-linecap="round" />
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#10b981" />
+                                            <stop offset="100%" stop-color="#059669" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                                <!-- Score display -->
+                                <div class="absolute text-center">
+                                    <span class="text-3xl font-extrabold text-gray-800">8%</span>
+                                    <span class="block text-xxs font-semibold uppercase tracking-wider text-green-500">Low Risk</span>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-3 font-medium">Verified Safe Application</p>
+                        </div>
+
+                        <!-- Checklists for AI Checks -->
+                        <div class="md:col-span-2 space-y-3.5">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="flex items-center text-gray-600"><i class="fas fa-check-circle text-green-500 mr-2.5"></i>Face KYC Match Check</span>
+                                <span class="font-bold text-gray-800">98.6% Similarity</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-1.5">
+                                <div class="bg-green-500 h-1.5 rounded-full" style="width: 98.6%"></div>
+                            </div>
+
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="flex items-center text-gray-600"><i class="fas fa-check-circle text-green-500 mr-2.5"></i>Doc Anti-Tamper Check</span>
+                                <span class="font-bold text-gray-800">No Alterations Detected</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-1.5">
+                                <div class="bg-green-500 h-1.5 rounded-full" style="width: 100%"></div>
+                            </div>
+
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="flex items-center text-gray-600"><i class="fas fa-check-circle text-green-500 mr-2.5"></i>Location & Network Integrity</span>
+                                <span class="font-bold text-gray-800">Device Match Verified</span>
+                            </div>
+                            <div class="w-full bg-gray-100 rounded-full h-1.5">
+                                <div class="bg-green-500 h-1.5 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Document Locker -->
+                <div class="bg-white rounded-3xl shadow-xl p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                        <i class="fas fa-folder-closed text-cyan-500 mr-3"></i>AI Verified Document Locker
+                    </h3>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <!-- Doc 1 Aadhaar -->
+                        <div class="flex items-center justify-between p-4 bg-gray-50 border border-gray-100 rounded-2xl hover:shadow-md transition">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-cyan-100 text-cyan-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-id-card"></i></div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-700">Aadhaar Card</h4>
+                                    <p class="text-xxs text-gray-400">PDF • Verified June 4</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg"><i class="fas fa-check-circle mr-1"></i>Passed</span>
+                        </div>
+
+                        <!-- Doc 2 PAN -->
+                        <div class="flex items-center justify-between p-4 bg-gray-50 border border-gray-100 rounded-2xl hover:shadow-md transition">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-id-card-alt"></i></div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-700">PAN Card</h4>
+                                    <p class="text-xxs text-gray-400">JPEG • Verified June 4</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg"><i class="fas fa-check-circle mr-1"></i>Passed</span>
+                        </div>
+
+                        <!-- Doc 3 Marksheet 10th -->
+                        <div class="flex items-center justify-between p-4 bg-gray-50 border border-gray-100 rounded-2xl hover:shadow-md transition">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-file-invoice"></i></div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-700">10th Marksheet</h4>
+                                    <p class="text-xxs text-gray-400">PDF • Verified June 4</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg"><i class="fas fa-check-circle mr-1"></i>Passed</span>
+                        </div>
+
+                        <!-- Doc 4 Marksheet 12th -->
+                        <div class="flex items-center justify-between p-4 bg-gray-50 border border-gray-100 rounded-2xl hover:shadow-md transition">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-file-invoice"></i></div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-700">12th Marksheet</h4>
+                                    <p class="text-xxs text-gray-400">PDF • Verified June 4</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg"><i class="fas fa-check-circle mr-1"></i>Passed</span>
+                        </div>
+
+                        <!-- Doc 5 Admission Letter -->
+                        <div class="flex items-center justify-between p-4 bg-gray-50 border border-gray-100 rounded-2xl hover:shadow-md transition">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-graduation-cap"></i></div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-700">Admission Letter</h4>
+                                    <p class="text-xxs text-gray-400">PDF • Verified June 4</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg"><i class="fas fa-check-circle mr-1"></i>Passed</span>
+                        </div>
+
+                        <!-- Doc 6 Bank Statement -->
+                        <div class="flex items-center justify-between p-4 bg-gray-50 border border-gray-100 rounded-2xl hover:shadow-md transition">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-yellow-100 text-yellow-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-university"></i></div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-gray-700">Bank Statement</h4>
+                                    <p class="text-xxs text-gray-400">PDF • Verified June 4</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg"><i class="fas fa-check-circle mr-1"></i>Passed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Interactive EMI Calculator & Logs -->
+            <div class="space-y-8">
+                <!-- EMI Repayment Calculator Widget -->
+                <div class="bg-white rounded-3xl shadow-xl p-8 relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                        <i class="fas fa-calculator text-emerald-500 mr-3"></i>EMI Repayment Calculator
+                    </h3>
+
+                    <div class="space-y-6">
+                        <!-- Amount Slider -->
+                        <div>
+                            <div class="flex justify-between text-sm font-medium mb-2">
+                                <span class="text-gray-600">Loan Principal</span>
+                                <span id="amountVal" class="text-emerald-600 font-bold">₹7,50,000</span>
+                            </div>
+                            <input type="range" id="amountSlider" min="50000" max="2500000" step="25000" value="750000"
+                                class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                            <div class="flex justify-between text-xxs text-gray-400 mt-1">
+                                <span>₹50K</span>
+                                <span>₹25 Lakhs</span>
+                            </div>
+                        </div>
+
+                        <!-- Interest Rate Display -->
+                        <div>
+                            <div class="flex justify-between text-sm font-medium mb-1">
+                                <span class="text-gray-600">Interest Rate (Fixed)</span>
+                                <span class="text-gray-800 font-bold">8.5% p.a.</span>
+                            </div>
+                        </div>
+
+                        <!-- Tenure Slider -->
+                        <div>
+                            <div class="flex justify-between text-sm font-medium mb-2">
+                                <span class="text-gray-600">Repayment Tenure</span>
+                                <span id="tenureVal" class="text-emerald-600 font-bold">7 Years</span>
+                            </div>
+                            <input type="range" id="tenureSlider" min="1" max="15" step="1" value="7"
+                                class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                            <div class="flex justify-between text-xxs text-gray-400 mt-1">
+                                <span>1 Year</span>
+                                <span>15 Years</span>
+                            </div>
+                        </div>
+
+                        <!-- Output Metrics Box -->
+                        <div class="bg-emerald-50 rounded-2xl p-5 border border-emerald-100">
+                            <div class="text-center">
+                                <span class="text-xs uppercase tracking-wider font-semibold text-emerald-700">Estimated Monthly EMI</span>
+                                <div id="monthlyEmi" class="text-3xl font-extrabold text-emerald-800 mt-1">₹11,902</div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-emerald-200 text-center">
+                                <div>
+                                    <span class="text-xxs uppercase tracking-wider text-emerald-600 block">Total Interest</span>
+                                    <span id="totalInterest" class="text-sm font-bold text-emerald-800">₹2,49,768</span>
+                                </div>
+                                <div>
+                                    <span class="text-xxs uppercase tracking-wider text-emerald-600 block">Total Repayable</span>
+                                    <span id="totalPayable" class="text-sm font-bold text-emerald-800">₹9,99,768</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Audit logs -->
+                <div class="bg-gray-900 rounded-3xl shadow-xl p-8 text-gray-300 font-mono text-xs">
+                    <div class="flex justify-between items-center mb-4 pb-2 border-b border-gray-800">
+                        <span class="font-bold text-white flex items-center"><i class="fas fa-terminal text-green-500 mr-2"></i>AI Verification Audit logs</span>
+                        <span class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
+                    </div>
+                    <div class="h-44 overflow-y-auto space-y-2.5 scrollbar-thin scrollbar-thumb-gray-800">
+                        <p class="text-green-500">[09:47:02] Application submitted (ID: EDU-2026-8947)</p>
+                        <p class="text-green-400">[09:47:05] KYC Video stream initiated. Checking liveness...</p>
+                        <p class="text-green-400">[09:47:15] Video face compared with Passport Photo: 98.6% match.</p>
+                        <p class="text-green-400">[09:47:20] Scanning PDF metadata. 10th and 12th marksheets validated.</p>
+                        <p class="text-green-400">[09:47:25] Extracting Aadhaar identity. OCR successfully completed.</p>
+                        <p class="text-yellow-400">[09:47:29] Location telemetry verification: Home coordinates (New Delhi) match.</p>
+                        <p class="text-green-400">[09:47:35] Hard CIBIL score pulled: 785 credit worthiness.</p>
+                        <p class="text-green-500 font-semibold">[09:47:40] AI Model Fraud rating assigned: 8% (SAFE status).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="loan-application.js"></script>
+    <script src="student-dashboard.js"></script>
+</body>
+
+</html>
